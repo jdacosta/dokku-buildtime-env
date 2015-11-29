@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+APP="$1"
+
+##############
+BUILD_TIME=$(date +%s)
+##############
+
+# Push the BUILD_TIME to the docker image
+dokku config:set $APP BUILD_TIME=$BUILD_TIME
